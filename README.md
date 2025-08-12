@@ -166,7 +166,7 @@
 - Tracks performance and identifies issues  
 
 
-- Devops Job roles:
+### Devops Job roles:
 - devops engineer(cicd automation,)
 - SRE( Site Reliability Engineer)
   ->root cause analysis
