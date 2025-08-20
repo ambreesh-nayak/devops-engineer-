@@ -24,7 +24,7 @@
 
 
 
-![image](https://github.com/abhipraydhoble/devops-B-34/assets/122669982/7fcb6dc3-dfcd-4a00-9349-91b16869bd39)
+
 
 
 ${\color{Green} \textbf{1. \ Developement \ Team:}}$ Responsible for writing code
