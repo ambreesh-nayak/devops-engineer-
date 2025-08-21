@@ -101,6 +101,7 @@ ${\color{lightblue}  \textbf{Docker}}$
 
 ##  ${\color{lightblue} \textbf{docker \ architecture}}$ 
 
+<img width="801" height="401" alt="image" src="https://github.com/user-attachments/assets/044a0c54-6aaf-40b8-bdb7-256f626d7b4a" />
 
 
 ##  ${\color{lightblue} \textbf{Installation-Steps  \ (Amazon-Linux)}}$ 
