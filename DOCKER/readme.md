@@ -120,7 +120,7 @@ sudo chmod 777 /var/run/docker.sock
 docker --version
 ````
 
-##  ${\color{lightblue} \textbf{Installation-Steps  \ (Amazon-Linux)}}$ 
+##  ${\color{lightblue} \textbf{Installation-Steps  \ (Ubuntu)}}$ 
 
 
 ````
