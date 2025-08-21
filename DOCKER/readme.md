@@ -1,7 +1,8 @@
 
 #  $${\color{lightlightblue} \textbf{Docker 🐳}}$$
 
-![image](https://github.com/user-attachments/assets/4ed9c2f2-a103-42eb-84b6-473d1046c90b)
+<img width="1262" height="657" alt="image" src="https://github.com/user-attachments/assets/7fb03208-1d32-4a77-b84c-b50fb166245e" />
+
 
 
 
@@ -108,15 +109,31 @@ ${\color{lightblue}  \textbf{Docker}}$
 ````
 sudo yum update -y
 sudo yum install -y docker
-sudo service docker start
+sudo systemctl start docker
+sudo systemctl enable docker
 sudo usermod -aG docker ec2-user
 newgrp docker
+sudo chmod 777 /var/run/docker.sock
 ````
 ````
 docker --version
 ````
 
+##  ${\color{lightblue} \textbf{Installation-Steps  \ (Amazon-Linux)}}$ 
 
+
+````
+sudo apt update -y
+sudo apt install  docker.io -y
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -aG docker ubuntu
+newgrp docker
+sudo chmod 777 /var/run/docker.sock
+````
+````
+docker --version
+````
 
 
 
