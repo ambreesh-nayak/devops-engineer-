@@ -67,12 +67,6 @@ docker ps -a
 ```
 
 
-###  Build an Image from Dockerfile
-Creates a Docker image from a `Dockerfile` in the specified directory.
-```
-docker build -t <image_name> <path_to_dockerfile>
-```
-
 
 
 ###  Start a Stopped Container
@@ -84,11 +78,17 @@ docker start <container_id>
 ###  Stop All Running Containers
 Stops all containers currently running.
 ```
-docker stop $(docker ps -q)
+docker stop $(docker ps -aq)
 ```
 
 ###  Remove All Stopped Containers
 Deletes all containers that are not running.
 ```
-docker rm $(docker ps -a -q)
+docker rm $(docker ps -aq)
+```
+
+###  Remove All  Image
+Deletes all Docker image from the system.
+```
+docker rmi $(docker images)
 ```
