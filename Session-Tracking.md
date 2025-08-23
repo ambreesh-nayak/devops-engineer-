@@ -1,13 +1,7 @@
 
----
-**Git & GitHub**
----
 
-- 11-aug-2025                    Devops Introduction
-- 12-aug-2025                    Started with git
-- 13-aug-2025                    Git Authentication(https,ssh)
-- 18-aug-2025                    Git Branching,Merge
-- 19-aug-2025                    Git Stash, Cherry-pick, GitLab 
----
-**Docker**
----
+# Visit this link to get Class History 
+````
+https://docs.google.com/spreadsheets/d/1aAiLcymNgk7KuR8so9zR6_KRC09S-5uNOT1nsgMKX6A/edit?usp=sharing
+````
+
