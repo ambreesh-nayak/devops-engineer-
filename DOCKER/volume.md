@@ -53,6 +53,9 @@ docker ps
 ````
 docker exec -it c2 /bin/bash
 ````
+````
 cd drive
-
+````
+````
 ls
+````
