@@ -24,6 +24,11 @@ docker pull ubuntu
 ````
 docker run -itd --name c1 --mount source=myvol,target=/oncdecb29 ubuntu
 ````
+or
+
+````
+docker run -itd --name cont1 -v disk:/storage ubuntu
+````
 ## list running cont
 ````
 docker ps
@@ -45,6 +50,10 @@ touch index.html error.html style.css
 ````
 docker run -itd --name c2 --mount source=myvol,target=/drive ubuntu
 ````
+or 
+````
+docker run -itd --name cont2 -v disk:/data ubuntu
+````
 ## list running cont
 ````
 docker ps
@@ -59,3 +68,14 @@ cd drive
 ````
 ls
 ````
+## delete cont and volumes
+
+````
+docker rm -f cont1 cont2
+````
+
+````
+docker volume rm disk
+````
+
+
