@@ -39,9 +39,9 @@
    ```` 
 
 example:
- env: dev
- env: test
- env: prod 
+ - env: dev
+ - env: test
+ - env: prod 
  -----------------------------------------------------------------
 ### ReplicationController
 
