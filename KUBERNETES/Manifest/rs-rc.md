@@ -4,7 +4,40 @@
 
 **ReplicaSet:**
 - support equality based as well as set based selector
+---
+### selector
+**types:**
+1. equality based selector 
+2. set based selectors
 
+   a) In 
+     selector:
+      matchExpressions:
+        - key: env 
+          operator: In 
+          values:
+           - dev
+           - test
+
+   b) NotIn
+    selector:
+     matchExpressions:
+        - key: env 
+          operator: NotIn 
+          values:
+           - prod
+   c) exists
+         selector:
+     matchExpressions:
+        - key: env 
+          operator: exists 
+         
+
+example:
+ env: dev
+ env: test
+ env: prod 
+ -----------------------------------------------------------------
 ### ReplicationController
 
 ````
