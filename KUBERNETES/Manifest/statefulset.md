@@ -31,3 +31,9 @@ spec:
         requests:
           storage: 1Gi
 ````
+````
+kubectl apply sts.yaml
+````
+````
+kubectl get pods
+````
