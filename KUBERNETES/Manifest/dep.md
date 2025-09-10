@@ -51,7 +51,7 @@ kubectl get svc
 kubectl get deploy -o wide
 ````
 ````
-kubectl set image deploy/studentapp  c2=abhipraydh96/studentapp:v1 --record
+kubectl set image deploy/studentapp  c2=abhipraydh96/studentapp:v2 --record
 ````
 ````
 kubectl rollout history deploy/studentapp
