@@ -29,3 +29,31 @@ kubectl config set-context --current --namespace=prod
 kubectl config view --minify | grep namespace:
 ````
 ---
+## create ns using yaml
+````
+# namespace
+apiVersion: v1 
+kind: Namespace
+metadata: 
+  name: staging
+````
+
+## create pod
+````
+apiVersion: v1 
+kind: Pod
+metadata: 
+  name: pod-blue
+  namespace: staging
+  labels: 
+    app: blue
+spec: 
+  containers:
+   - name: c1 
+     image: abhipraydh96/blue 
+     ports:
+     - containerPort: 80
+````
+````
+kubectl get pod -n staging
+````
