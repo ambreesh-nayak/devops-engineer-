@@ -89,7 +89,8 @@ resource "aws_autoscaling_group" "example_asg" {
     version = "$Latest"
   }
   #change subnet ids
-  vpc_zone_identifier = ["subnet-05bda144578ea9914", "subnet-0b6e1ae4003ff61b3"]
+  vpc_zone_identifier = ["subnet-05bda144578ea9914", "subnet-0b6e1ae4003ff61b3"]   # Subnets to use for the load balancer
+
   min_size            = 1
   max_size            = 3
   desired_capacity    = 2
@@ -114,7 +115,7 @@ resource "aws_lb_target_group" "lb_tg_home" {
   name     = "lb-tg-home"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = "vpc-0b513c39beed873c2"
+  vpc_id   = "vpc-0b513c39beed873c2"  #change vpc id
 
   health_check {
     path                = "/"
@@ -132,7 +133,7 @@ resource "aws_lb_target_group" "lb_tg_laptop" {
   name     = "lb-tg-laptop"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = "vpc-0b513c39beed873c2"
+  vpc_id   = "vpc-0b513c39beed873c2"   #change vpc id
 
   health_check {
     path                = "/laptop/"
