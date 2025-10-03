@@ -83,4 +83,14 @@ terraform init
 
 ![image](https://github.com/user-attachments/assets/83c85698-f5b9-43b7-80fe-85ecb229cd8a)
 
+# Topic
 
+- Terraform workflow (init,validate,plan,apply)
+- ec2 instance,user data and seurity group
+- vpc
+- modules
+- backend
+- elb
+- tf project on eks cluster
+- data block
+- functions and loops
