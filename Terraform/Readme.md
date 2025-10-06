@@ -94,3 +94,5 @@ terraform init
 - tf project on eks cluster
 - data block
 - functions and loops
+  
+<img width="1051" height="357" alt="image" src="https://github.com/user-attachments/assets/99fbf73f-d8df-4c5b-95ed-234bb557cb1c" />
