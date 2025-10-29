@@ -68,6 +68,36 @@ pipeline {
     }
 }
 ````
+#simplifed pipeline for reference
+```groovy
+pipeline {
+    agent any 
+    
+    tools {
+        maven 'maven-3'
+    }
+    stages{
+        stage('code-pull'){
+            steps{
+                git branch: 'main', url: 'https://github.com/abhipraydhoble/Project-InsureMe.git'
+            }
+        }
+        stage('code-build'){
+            steps{
+                sh 'mvn clean package'
+            }
+        }
+        stage('code-push'){
+            steps{
+                withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                  sh 'aws s3 cp target/Insurance-0.0.1-SNAPSHOT.jar s3://bucket-demo-s3-amazon'
+                }
+                
+            }
+        }
+    }
+}
+```
 
 
 ## repository link
