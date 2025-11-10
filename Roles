@@ -1,0 +1,143 @@
+Roles and Responsibilities as Linux / System (Admin, Engineer, Support, Consultant, Developer)
+ 
+User and Permission Management
+Manage user accounts, permissions, and access controls.
+Implement security measures to safeguard systems and data.
+Server Security through Discretionary and SELinux policies, implementing firewall, allow and disallow port access.
+ 
+Installation and Package Management
+Install, configure, and maintain Linux operating systems (e.g., CentOS, Ubuntu, Red Hat) - (Network Boot)
+Set up and maintain web servers (e.g., Apache, Nginx) and database servers (e.g., MariaDB, PostgreSQL).
+Perform routine system updates and patches.
+Configure and manage virtualization environments (e.g., VMware, KVM).
+Planned and executed packages and updates installations necessary for optimal system performance.
+ 
+Monitoring
+Monitor system performance and troubleshoot issues proactively.
+Monitoring and resolving high CPU load and memory load related issues.
+Monitor network traffic and identify potential vulnerabilities.
+Monitor server resources and optimize performance.
+ 
+Backup and Schedule
+Scheduling backups and log rotations using cron service.
+Backup and restore critical data and applications.
+Created new backup system for site's database servers, allowing data archives to be stored on remote server.
+Develop scripts (e.g., Bash, Python) to automate routine tasks and system administration processes.
+ 
+Troubleshooting
+Configure and troubleshoot network interfaces and protocols.
+Provide temporary root access to local users
+Configuration of remote access utilities such as SSH with password less authentication
+Remote administration and monitoring of Servers using tools like SSH, FTP, TELNET, SCP & Manage installed services.
+Kernel patching; root password recovery; solving grub issue
+ 
+Manage Services
+Creating and managing partitions and volumes
+Configuration of NAS storage using NFS and samba; Sharing partitions using ISCSI storage and RAID storage.
+Configure LAMP, Wordpress, Cpanel, Tomcat Platforms
+ 
+Other Tools
+Utilize configuration management tools Ansible for automated deployment and configuration management.
+Install and Configure Jenkins Server on client environment
+Created kubernetes cluster using kubeadm
+Collaborate with cross-functional teams to support various IT projects and initiatives.
+Document system configurations, procedures, and troubleshooting steps.
+Provide technical support and guidance to team members and end-users
+ 
+Roles and Responsibilities as AWS / Cloud (Admin, Engineer, Support, Consultant, Developer)
+ 
+Cloud Infrastructure Management
+Design, implement, and maintain scalable and secure cloud infrastructures
+Monitor and manage cloud services to ensure optimal performance and reliability.
+Create infrastructure with best practices using AWS Stack VPC, EC2, RDS, Route53, CloudFront, s3, IAM, and Cloudwatch
+ 
+Deployment and Migration
+Migrate existing applications and data to the cloud while ensuring minimal downtime and high availability.
+Optimize cloud infrastructure for cost-efficiency and performance. Using s3 lifecycle, instance purchasing options, etc.
+ 
+Security and Compliance
+Ensure the security of cloud systems by implementing best practices in identity and access management (IAM), encryption, and network security.
+Maintain compliance with organizational and regulatory requirements like GDPR, HIPAA, etc.
+ 
+Deployment and Automation 
+Build and manage CI/CD pipelines for seamless application deployment across cloud environments.
+Automate routine tasks like provisioning, configuration, and scaling using tools like Ansible, Jenkins, or GitLab CI/CD.
+Enable deployment automation for multi-cloud or hybrid cloud setups.
+ 
+Troubleshooting and Problem Resolution
+Identify and resolve issues related to cloud infrastructure, networking, and application deployment.
+Collaborate with development and IT teams to troubleshoot performance bottlenecks or failures.
+ 
+Automation and Scripting
+Develop automation scripts and tools to improve operational efficiency and reduce manual tasks.
+Create CI/CD pipelines for continuous integration and delivery of applications.
+ 
+Collaboration with Teams
+Work closely with DevOps teams to integrate cloud solutions into the software development lifecycle.
+Collaborate with business stakeholders to align cloud strategies with organizational goals.
+ 
+Monitoring and Optimization
+Set up and manage monitoring tools to track usage, performance, and costs
+Regularly review cloud spending and make recommendations to optimize costs.
+ 
+Backup and Disaster Recovery
+Develop and implement backup strategies to ensure data integrity and availability.
+ 
+ 
+Research and Development
+Stay updated on the latest cloud technologies and services.
+Recommend new tools or approaches to improve cloud-based processes and infrastructure.
+ 
+Documentation
+Create and maintain technical documentation, including cloud architecture diagrams, configurations, and standard operating procedures (SOPs).
+ 
+Roles and Responsibilities as DevOps (Admin, Engineer, Support, Consultant, Developer)
+ 
+CI/CD Pipeline Development
+Design, implement, and maintain Continuous Integration and Continuous Deployment (CI/CD) pipelines.
+Automate build, test, and deployment processes to enhance efficiency.
+ 
+Collaboration Between Teams
+Act as a bridge between development, QA, and IT operations teams.
+Ensure smooth communication and collaboration to align development and operations objectives.
+ 
+Infrastructure Management
+Deploy, configure, and manage servers and cloud infrastructure (AWS, Azure, GCP, etc.).
+Use Infrastructure as Code (IaC) tools like Terraform, Ansible, or CloudFormation for automated provisioning.
+ 
+Monitoring and Logging
+Set up monitoring tools (e.g., Prometheus, Grafana, Datadog, ELK Stack) to track system performance and application health.
+Analyze logs to identify and troubleshoot issues proactively.
+ 
+Automation and Scripting
+Automate repetitive tasks, including infrastructure setup, application deployment, and scaling.
+Write scripts in languages like Bash, Python, or PowerShell for custom automation needs.
+ 
+Security and Compliance
+Implement security measures such as role-based access control, encryption, and vulnerability assessments.
+Ensure compliance with industry standards like ISO, GDPR, or SOC2.
+ 
+Configuration Management
+Manage application configurations using tool Ansible
+Ensure consistency across development, staging, and production environments.
+ 
+Containerization and Orchestration
+Work with containerization technologies like Docker to package applications.
+Use orchestration tool Kubernetes to manage containerized applications and services.
+ 
+Performance Optimization
+Identify performance bottlenecks and optimize system resources.
+Improve scalability and fault tolerance of applications and infrastructure.
+ 
+Disaster Recovery and Backups
+Create and manage backup strategies for critical systems and data.
+Develop disaster recovery plans to minimize downtime and data loss.
+            vcc
+Incident Management
+Act as the first point of contact for incidents related to system performance or availability.
+Document incident resolution steps to prevent recurrence.
+ 
+Process Improvement
+Continuously evaluate and refine DevOps processes for better productivity and agility.
+Research and implement new tools and practices to enhance workflows.
+ 
