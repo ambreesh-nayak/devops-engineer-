@@ -1,0 +1,158 @@
+pipeline {
+    agent any
+
+    tools {
+        jdk 'jdk17'
+        maven 'maven3'
+        nodejs 'node16'
+    }
+
+    environment {
+        SCANNER_HOME = tool 'sonar-scanner'
+        SONAR_TOKEN = credentials('sonar-token')
+        DOCKERHUB = credentials('dockerhub-creds')
+        KUBECONFIG_DEV = 'kubeconfig-dev'
+        KUBECONFIG_PROD = 'kubeconfig-prod'
+        SLACK_CHANNEL = '#devops-alerts'
+    }
+
+    options {
+        timestamps()
+        buildDiscarder(logRotator(numToKeepStr: '15'))
+        ansiColor('xterm')
+    }
+
+    stages {
+
+        stage('Checkout Code') {
+            steps {
+                echo "📥 Pulling latest code from GitHub..."
+                git branch: 'main', url: 'https://github.com/org/project.git'
+            }
+        }
+
+        stage('Code Quality & Testing (Parallel)') {
+            parallel {
+
+                stage('Lint Check') {
+                    steps {
+                        echo "🧹 Running ESLint..."
+                        sh 'npm install eslint'
+                        sh 'npx eslint . || true'
+                    }
+                }
+
+                stage('Unit Tests') {
+                    steps {
+                        echo "🧪 Running Unit Tests..."
+                        sh 'mvn test'
+                    }
+                }
+
+                stage('SonarQube Analysis') {
+                    steps {
+                        echo "🔍 Performing SonarQube Scan..."
+                        withSonarQubeEnv('sonar-server') {
+                            sh '''
+                            $SCANNER_HOME/bin/sonar-scanner \
+                            -Dsonar.projectKey=EnterpriseProject \
+                            -Dsonar.sources=. \
+                            -Dsonar.java.binaries=target/
+                            '''
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Quality Gate') {
+            steps {
+                script {
+                    echo "🚦 Checking SonarQube Quality Gate..."
+                    def qg = waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+                    if (qg.status != 'OK') {
+                        error "❌ Quality Gate failed: ${qg.status}"
+                    } else {
+                        echo "✅ Quality Gate passed: ${qg.status}"
+                    }
+                }
+            }
+        }
+
+        stage('Build Application') {
+            steps {
+                echo "🏗️ Building Maven Project..."
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Security Scan - Trivy') {
+            steps {
+                echo "🛡️ Running Trivy Security Scan..."
+                sh 'trivy fs . --exit-code 0 --format table > trivy-report.txt'
+            }
+        }
+
+        stage('Docker Build & Push') {
+            steps {
+                echo "🐳 Building & Pushing Docker Image..."
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                    sh '''
+                    docker build -t org/project:${BUILD_NUMBER} .
+                    docker tag org/project:${BUILD_NUMBER} org/project:latest
+                    echo "$PASS" | docker login -u "$USER" --password-stdin
+                    docker push org/project:${BUILD_NUMBER}
+                    docker push org/project:latest
+                    '''
+                }
+            }
+        }
+
+        stage('Deploy to Dev Environment') {
+            steps {
+                echo "🚢 Deploying to DEV..."
+                withCredentials([file(credentialsId: "${KUBECONFIG_DEV}", variable: 'KUBECONFIG_FILE')]) {
+                    sh '''
+                    export KUBECONFIG=$KUBECONFIG_FILE
+                    kubectl apply -f k8s/deployment.yaml
+                    kubectl rollout status deployment/project-deployment
+                    '''
+                }
+            }
+        }
+
+        stage('Manual Approval for PROD Deploy') {
+            steps {
+                timeout(time: 5, unit: 'MINUTES') {
+                    input message: "🧭 Approve deployment to PROD?", ok: "Deploy Now 🚀"
+                }
+            }
+        }
+
+        stage('Deploy to Production') {
+            steps {
+                echo "🚀 Deploying to PROD environment..."
+                withCredentials([file(credentialsId: "${KUBECONFIG_PROD}", variable: 'KUBECONFIG_FILE')]) {
+                    sh '''
+                    export KUBECONFIG=$KUBECONFIG_FILE
+                    kubectl apply -f k8s/deployment.yaml
+                    kubectl rollout status deployment/project-deployment
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Deployment Successful! Build: ${BUILD_NUMBER}"
+            slackSend(channel: "${SLACK_CHANNEL}", color: '#36a64f',
+                message: "✅ *Build #${BUILD_NUMBER}* succeeded! Project deployed to PROD 🎉")
+        }
+        failure {
+            echo "❌ Build Failed!"
+            slackSend(channel: "${SLACK_CHANNEL}", color: '#ff0000',
+                message: "❌ *Build #${BUILD_NUMBER}* failed! Please check Jenkins logs 🚨")
+        }
+    }
+}
