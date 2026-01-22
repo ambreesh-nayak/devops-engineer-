@@ -1,5 +1,4 @@
 
-devops is  best for all
  
 # Visit this link to get Class History 
 ````
